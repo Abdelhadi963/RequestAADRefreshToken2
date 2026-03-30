@@ -2,7 +2,7 @@
 
 A patched and extended C# implementation of [Lee Christensen's RequestAADRefreshToken](https://github.com/leechristensen/RequestAADRefreshToken), updated for modern Azure AD authentication requirements.
 
-Requests a PRT cookie from an Azure AD joined device by calling the `IProofOfPossessionCookieInfoManager` COM interface directly inside `MicrosoftAccountTokenProvider.dll` — the same mechanism used by Chrome and Edge for browser SSO.
+Requests a PRT cookie from an Azure AD joined device by calling the `IProofOfPossessionCookieInfoManager` COM interface directly inside `MicrosoftAccountTokenProvider.dll` the same mechanism used by Chrome and Edge for browser SSO.
 
 ---
 
