@@ -177,11 +177,11 @@ namespace TokenHelper.Internal
         static void PrintUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("  Default (auto nonce):   RequestAADRefreshToken.exe");
-            Console.WriteLine("  Custom tenant:          RequestAADRefreshToken.exe -t <TenantId>");
-            Console.WriteLine("  Manual nonce:           RequestAADRefreshToken.exe --nonce <nonce>");
-            Console.WriteLine("  Full URL:               RequestAADRefreshToken.exe <full_url_with_sso_nonce>");
-            Console.WriteLine("  Legacy (no nonce):      RequestAADRefreshToken.exe -legacy");
+            Console.WriteLine("  Default (auto nonce):   RequestAADRefreshToken2.exe");
+            Console.WriteLine("  Custom tenant:          RequestAADRefreshToken2.exe -t <TenantId>");
+            Console.WriteLine("  Manual nonce:           RequestAADRefreshToken2.exe --nonce <nonce>");
+            Console.WriteLine("  Full URL:               RequestAADRefreshToken2.exe <full_url_with_sso_nonce>");
+            Console.WriteLine("  Legacy (no nonce):      RequestAADRefreshToken2.exe -legacy");
             Console.WriteLine();
         }
 
