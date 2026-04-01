@@ -123,7 +123,7 @@ Use [Get-PRTToken.ps1](https://gist.github.com/Abdelhadi963/8a7be60ffa9ed2fd5002
 ## RequestAADRefreshToken2.ps1  PowerShell Port of the EXE
 
 `RequestAADRefreshToken.ps1` is a direct PowerShell port of `RequestAADRefreshToken2.exe`.
-The compiled DLL is embedded as base64 and loaded reflectively — no binary on disk required.
+The compiled DLL is embedded as base64 and loaded reflectively no binary on disk required.
 Exposes `Get-AADRefreshToken` with the same arguments as the exe.
 
 ### Load
