@@ -86,7 +86,7 @@ RequestAADRefreshToken2.exe -legacy
 
 ## Example Output
 
-<img width="1581" height="951" alt="image" src="https://github.com/user-attachments/assets/fad177c1-6fa7-47fc-b359-f295bb8e5894" />
+
 
 ---
 
@@ -102,7 +102,7 @@ RequestAADRefreshToken2.exe -legacy
    * **Value:** the `Data` field from the output
 5. Refresh the page
    
-<img width="1812" height="932" alt="image" src="https://github.com/user-attachments/assets/dc04fbad-53a5-4766-87c1-d0482f2ecc37" />
+
 
 ### Token Exchange via roadtx
 
