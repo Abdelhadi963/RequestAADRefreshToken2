@@ -19,7 +19,7 @@ The original tool was published in July 2020 and stopped working for token excha
 | 1 | CLSID stored as string in metadata caught by Defender | CLSID reconstructed from integer literals at runtime via `Type.GetTypeFromCLSID()` |
 | 2 | Identifying namespace and class names in metadata flagged by AMSI | All names replaced with generic alternatives |
 | 3 | Stride bug in unmanaged array walk wrong struct size corrupts pointer on multi-cookie responses | Fixed to use unmanaged struct size for pointer arithmetic |
-| 4 | No nonce support — cookie uses `iat` timestamp, rejected by AAD since Oct 2020 | Nonce accepted via `--nonce` flag or auto-fetched from AAD |
+| 4 | No nonce support cookie uses `iat` timestamp, rejected by AAD since Oct 2020 | Nonce accepted via `--nonce` flag or auto-fetched from AAD |
 
 ---
 
